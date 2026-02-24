@@ -1,292 +1,227 @@
 # CredentialSaver
 
-A secure, local password manager that stores your credentials entirely in your browser using AES-256-GCM encryption. No server-side components, no cloud storage - your data stays on your device.
+<div align="center">
 
-## Features
+![CredentialSaver](public/favicon.ico)
 
-- **Secure Storage**: AES-256-GCM encryption using the Web Crypto API
-- **Local Only**: All data stored in IndexedDB - nothing leaves your browser
-- **Master Password**: Protect your vault with a strong master password
-- **Password Generator**: Generate strong, random passwords
-- **Categories**: Organize credentials into categories (Social, Email, Banking, Shopping, Work, Other)
-- **Search**: Quickly find credentials by name, username, website, or notes
-- **Import/Export**: Backup and restore your credentials in JSON or CSV format
-- **Dark/Light Mode**: Toggle between themes
-- **Audit Log**: Track all changes to your credentials
-- **Auto-Lock**: Automatically locks after 5 minutes of inactivity
-- **Responsive Design**: Works on desktop and mobile devices
+**A secure, local password manager that stores your credentials entirely in your browser using AES-256-GCM encryption.**
 
-## Installation
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-green.svg)](CHANGELOG.md)
+
+</div>
+
+## 🌟 Features
+
+- 🔒 **AES-256-GCM Encryption** - Military-grade encryption for your credentials
+- 💾 **Local-Only Storage** - Data never leaves your browser
+- 🔑 **Master Password** - Single password to access all credentials
+- 🎲 **Password Generator** - Create strong, random passwords
+- 📁 **Categories** - Organize credentials into folders
+- 🔍 **Search** - Find credentials instantly
+- 📤 **Import/Export** - Backup and restore your data
+- 🌙 **Dark Mode** - Easy on the eyes
+- 📱 **Responsive** - Works on all devices
+- 📊 **Audit Log** - Track all changes
+
+## 📋 Table of Contents
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Documentation](#documentation)
+- [Security](#security)
+- [Contributing](#contributing)
+- [License](#license)
+
+## 🚀 Installation
 
 ### Option 1: Direct File Access
 
-1. Download the project files:
-   - `index.html`
-   - `styles.css`
-   - `app.js`
-
-2. Open `index.html` in your web browser
+1. Clone or download this repository
+2. Open `public/index.html` in your web browser
 
 ### Option 2: Local Server (Recommended)
 
-Using Python:
 ```bash
-# Python 3
-python -m http.server 8000
+# Using Python
+python3 -m http.server 8000
 
-# Python 2
-python -m SimpleHTTPServer 8000
-```
-
-Using Node.js:
-```bash
+# Using Node.js
 npx http-server -p 8000
-```
 
-Using PHP:
-```bash
+# Using PHP
 php -S localhost:8000
 ```
 
-Then navigate to `http://localhost:8000` in your browser.
+Then navigate to `http://localhost:8000`
 
 ### Option 3: Browser Extension
 
-To use as a browser extension:
+Create a `manifest.json` in the root directory:
 
-1. Create a `manifest.json` file:
 ```json
 {
   "manifest_version": 3,
   "name": "CredentialSaver",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Secure local password manager",
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "public/index.html"
   },
   "permissions": ["storage"]
 }
 ```
 
-2. Load the extension in Chrome/Edge:
-   - Go to `chrome://extensions/`
-   - Enable "Developer mode"
-   - Click "Load unpacked"
-   - Select the folder containing your files
+Load as an unpacked extension in Chrome/Edge.
 
-## First Time Setup
+## 🎯 Quick Start
 
-1. Open CredentialSaver in your browser
-2. You'll be prompted to create a master password
-3. Choose a strong, unique password that you won't forget
-4. Confirm your master password
-5. Your vault is now ready!
+1. **Open** the application in your browser
+2. **Create** a strong master password (minimum 12 characters recommended)
+3. **Add** your first credential
+4. **Use** the password generator for secure passwords
+5. **Export** regular backups
 
-## Usage Guide
+## 📁 Project Structure
 
-### Adding a Credential
+```
+credentialsaver/
+├── public/                 # Public files
+│   ├── index.html          # Main HTML file
+│   └── favicon.ico         # Application icon
+├── src/                    # Source code
+│   ├── css/               # Stylesheets
+│   │   └── styles.css     # Main styles with dark/light mode
+│   ├── js/                # JavaScript
+│   │   └── app.js        # Application logic
+│   └── assets/            # Static assets
+├── docs/                   # Documentation
+│   ├── README.md          # User guide
+│   ├── SECURITY.md        # Security details
+│   └── TESTING.md         # Test cases
+├── tests/                  # Test files
+├── config/                 # Configuration files
+├── .gitignore             # Git ignore rules
+├── LICENSE                # MIT License
+├── package.json           # Project metadata
+├── CONTRIBUTING.md        # Contribution guidelines
+└── CHANGELOG.md          # Version history
+```
 
-1. Click the "Add Credential" button in the sidebar
-2. Fill in the required fields:
-   - **Account Name**: e.g., "Google Account"
-   - **Email/Username**: Your login email or username
-   - **Password**: Your password (or use the generator)
-3. Optionally add:
-   - **Website URL**: Link to the service
-   - **Category**: Choose a category for organization
-   - **Notes**: Additional information
-   - **Favorite**: Mark as important
-4. Click "Save Credential"
+## 📚 Documentation
 
-### Viewing Credentials
+| Document | Description |
+|----------|-------------|
+| [User Guide](docs/README.md) | Complete installation and usage instructions |
+| [Security](docs/SECURITY.md) | Security architecture and best practices |
+| [Testing](docs/TESTING.md) | Comprehensive test cases |
+| [Contributing](CONTRIBUTING.md) | How to contribute |
+| [Changelog](CHANGELOG.md) | Version history and changes |
 
-1. Click on any credential card to view details
-2. Click the eye icon to show/hide the password
-3. Click the copy icon to copy username or password to clipboard
-4. Click the website link to open it in a new tab
+## 🔒 Security
 
-### Editing a Credential
+CredentialSaver uses industry-standard security:
 
-1. Click the edit icon on a credential card
-2. Modify the fields as needed
-3. Click "Save Credential"
-
-### Deleting a Credential
-
-1. Click the delete icon on a credential card
-2. Confirm the deletion in the dialog
-
-### Using the Password Generator
-
-1. Click "Generate Password" when adding/editing a credential
-2. Adjust the length (8-64 characters)
-3. Select character types to include:
-   - Uppercase letters (A-Z)
-   - Lowercase letters (a-z)
-   - Numbers (0-9)
-   - Symbols (!@#$%^&*)
-4. Click "Regenerate" for a new password
-5. Click "Copy" to copy to clipboard
-6. Click "Use This Password" to insert it into the form
-
-### Searching Credentials
-
-1. Use the search bar in the header
-2. Type to search by name, username, website, or notes
-3. Results appear instantly as you type
-4. Click the X to clear the search
-
-### Filtering by Category
-
-1. Click on a category in the sidebar
-2. View only credentials in that category
-3. The count shows how many credentials are in each category
-
-### Importing Credentials
-
-1. Click Tools → Import
-2. Drag and drop a JSON file or click "Browse Files"
-3. Duplicates will be skipped
-4. Import results will be displayed
-
-### Exporting Credentials
-
-1. Click Tools → Export
-2. Choose format:
-   - **JSON**: Recommended, supports encrypted export
-   - **CSV**: For spreadsheet compatibility
-3. Choose whether to encrypt the export
-4. Click "Download Export"
-
-### Viewing Audit Log
-
-1. Click Tools → Audit Log
-2. View all actions taken in the app
-3. Click "Export Log" to save the log
-4. Click "Clear Log" to remove all entries
-
-### Locking the Application
-
-- Click the lock icon in the tools menu
-- Or wait 5 minutes for auto-lock
-- Re-enter your master password to unlock
-
-### Switching Themes
-
-- Click the sun/moon icon in the header
-- Toggle between light and dark mode
-- Your preference is saved
-
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `Esc` | Close modal |
-| `Ctrl/Cmd + K` | Focus search bar |
-
-## Browser Compatibility
-
-CredentialSaver works in all modern browsers that support:
-- Web Crypto API
-- IndexedDB
-- ES6 JavaScript
-
-Tested and working in:
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Opera 76+
-
-## Security
-
-### Encryption
-
-- **Algorithm**: AES-256-GCM
+- **Encryption**: AES-256-GCM
 - **Key Derivation**: PBKDF2 with 100,000 iterations
-- **Salt**: Unique salt per installation
-- **IV**: Random IV for each encryption
+- **Storage**: IndexedDB (encrypted)
+- **No Server**: All data stays local
 
-### Data Storage
+⚠️ **Important**: 
+- Clearing browser data deletes all credentials
+- Forgotten master password cannot be recovered
+- Regular backups are essential
 
-- **IndexedDB**: All encrypted data stored locally
-- **No Server**: No data sent to any external server
-- **Memory Only**: Decrypted data only in memory while unlocked
+See [Security Documentation](docs/SECURITY.md) for complete details.
 
-### Important Security Notes
+## 🤝 Contributing
 
-⚠️ **Read Before Using:**
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-1. **Local Storage Only**: Clearing browser data will delete all credentials. Regular backups are essential.
+### Quick Contribution Steps
 
-2. **Master Password**: If you forget your master password, your data cannot be recovered. There is no password reset feature.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a Pull Request
 
-3. **Single Browser**: Data is only accessible in the specific browser where it was stored. It won't sync across devices.
+## 📄 License
 
-4. **Export Security**: Exported files (especially unencrypted) contain your passwords. Keep them secure and delete after use.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-5. **Browser Security**: Use a reputable browser with good security features and keep it updated.
+## 🌐 Browser Support
 
-### Best Practices
+| Browser | Minimum Version |
+|---------|----------------|
+| Chrome | 90+ |
+| Firefox | 88+ |
+| Safari | 14+ |
+| Edge | 90+ |
+| Opera | 76+ |
 
-1. Use a strong, unique master password (at least 12 characters)
-2. Enable two-factor authentication on all your accounts
-3. Regularly export encrypted backups
-4. Lock the application when not in use
-5. Keep your browser and operating system updated
-6. Use a reputable password manager alongside this for critical accounts
+## 🎨 Screenshots
 
-## Troubleshooting
+### Light Mode
+```
+┌─────────────────────────────────────────┐
+│  🔐 CredentialSaver              │
+│  ┌────────────────────────────┐     │
+│  │ + Add Credential          │     │
+│  └────────────────────────────┘     │
+│  ┌────────────────────────────┐     │
+│  │ 📁 All Credentials (5)   │     │
+│  │ 👤 Social (2)            │     │
+│  │ 📧 Email (1)             │     │
+│  │ 🏦 Banking (1)            │     │
+│  │ 🛒 Shopping (1)           │     │
+│  └────────────────────────────┘     │
+│  ┌────────────────────────────┐     │
+│  │ 🔍 Search credentials...  │     │
+│  └────────────────────────────┘     │
+└─────────────────────────────────────────┘
+```
 
-### Application won't load
+### Dark Mode
+```
+┌─────────────────────────────────────────┐
+│  🔐 CredentialSaver              │
+│  ┌────────────────────────────┐     │
+│  │ + Add Credential          │     │
+│  └────────────────────────────┘     │
+│  ┌────────────────────────────┐     │
+│  │ 📁 All Credentials (5)   │     │
+│  │ 👤 Social (2)            │     │
+│  │ 📧 Email (1)             │     │
+│  │ 🏦 Banking (1)            │     │
+│  │ 🛒 Shopping (1)           │     │
+│  └────────────────────────────┘     │
+│  ┌────────────────────────────┐     │
+│  │ 🔍 Search credentials...  │     │
+│  └────────────────────────────┘     │
+└─────────────────────────────────────────┘
+```
 
-- Ensure JavaScript is enabled in your browser
-- Check browser console for errors
-- Try using a different browser
+## 📞 Support
 
-### Can't unlock with master password
+- 📖 [Documentation](docs/README.md)
+- 🔒 [Security Guide](docs/SECURITY.md)
+- 🧪 [Testing Guide](docs/TESTING.md)
+- 📝 [Report Issues](https://github.com/yourusername/credentialsaver/issues)
 
-- Double-check your password
-- If you've forgotten it, your data cannot be recovered
-- Consider this when choosing your master password
+## 🙏 Acknowledgments
 
-### Credentials not saving
+- Built with modern web technologies
+- Icons from [Feather Icons](https://feathericons.com/)
+- Inspired by industry password managers
 
-- Check browser storage permissions
-- Ensure IndexedDB is enabled
-- Try clearing browser cache and reloading
+---
 
-### Import fails
+<div align="center">
 
-- Ensure the file is valid JSON format
-- Check that the file was exported from CredentialSaver
-- Verify the file isn't corrupted
+**Made with ❤️ for security-conscious users**
 
-## Limitations
+[⬆ Back to Top](#credentialsaver)
 
-- No cloud sync or backup
-- No browser extension integration (yet)
-- No two-factor authentication for the app itself
-- No password sharing features
-- No team or family sharing
-
-## Future Enhancements
-
-Potential features for future versions:
-- Browser extension for auto-fill
-- Cloud backup options (encrypted)
-- Two-factor authentication
-- Password expiry reminders
-- Cross-browser sync
-- Mobile app version
-
-## License
-
-This project is provided as-is for personal use. Use at your own risk.
-
-## Support
-
-For issues, questions, or contributions, please refer to the project repository.
-
-## Credits
-
-Created as a secure, offline password manager solution.
+</div>

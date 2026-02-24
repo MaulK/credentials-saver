@@ -1,0 +1,29 @@
+{
+  "name": "credentialsaver",
+  "version": "1.0.0",
+  "description": "A secure, local password manager that stores credentials entirely in your browser using AES-256-GCM encryption",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "test": "echo 'Run manual tests by opening public/index.html in browser and following docs/TESTING.md'"
+  },
+  "keywords": [
+    "password-manager",
+    "security",
+    "encryption",
+    "credentials",
+    "local-storage",
+    "offline"
+  ],
+  "author": "CredentialSaver",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/credentialsaver"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/credentialsaver/issues"
+  },
+  "homepage": "https://github.com/yourusername/credentialsaver#readme"
+}
